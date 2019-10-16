@@ -1,0 +1,45 @@
+spring:
+  datasource:
+#   数据源基本配置
+    username: root
+    password: lp1986517
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/basic_data_base
+    type: com.alibaba.druid.pool.DruidDataSource
+#   数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+#   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  jackson:
+    data-format:yyyy-MM-dd HH:mm:ss
+  mybatis-plus:
+    global-config:
+      db-config:
+        id-type: auto
+        field-strategy: not_empty
+        #驼峰下划线转换
+        column-underline: true
+        #逻辑删除配置
+        logic-delete-value: 0
+        logic-not-delete-value: 1
+        db-type: mysql
+      refresh: false
+    configuration:
+      map-underscore-to-camel-case: true
+      cache-enabled: false
+  redis:
+    host:127.0.0.1
+    port:6379

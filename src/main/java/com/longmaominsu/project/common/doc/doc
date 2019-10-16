@@ -1,0 +1,10 @@
+//将json字符串转换成对象
+Map map = objectMapper.readValue(jsonString, Map.class);
+//转换对象类型
+SomethingPOJO pojo = objectMapper.convertValue(map, SomethingPOJO.class);
+//将对象转换成json字符串
+Sting string = objectMapper.writeValueAsString(pojo);
+//将json字符串转换成List
+JavaType javaType = mapper.getTypeFactory()
+.constructParametricType(List.class, Person.class);
+List<Person> jsonToPersonList = objectMapper.readValue(arrayToJson, mapType);
